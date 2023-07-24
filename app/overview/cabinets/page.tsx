@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 
 export interface CabinetsCollectionOverview {
@@ -47,7 +45,7 @@ export default async function CabinetsPage() {
                   <li>Brand: {cabinet.cabinet.brandName}</li>
                   <li>Enclosure: {cabinet.cabinet.enclosureType}</li>
                   <li>Product: {cabinet.cabinet.productName}</li>
-                  <Link href={`/cabinets/${cabinet.cabinet.cabinetUid}`}>
+                  <Link href={`cabinets/${cabinet.cabinet.cabinetUid}`}>
                     {cabinet.cabinet.cabinetUid}
                   </Link>
                 </ul>

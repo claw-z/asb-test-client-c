@@ -5,5 +5,5 @@ type Params = {
 };
 
 export default function CabinetPage({ params: { cabinetUid } }: Params) {
-  return <h1>Cabinet from cabinets</h1>;
+  return <h1>Cabinet from owners</h1>;
 }
