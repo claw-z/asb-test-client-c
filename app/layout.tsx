@@ -15,7 +15,7 @@ export default function RootLayout({
                 <Link href="/">Station</Link>
               </li>
               <li>
-                <Link href="/cabinets">Cabinet collections</Link>
+                <Link href="/overview">Overview</Link>
               </li>
             </ul>
           </nav>

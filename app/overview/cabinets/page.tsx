@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 
 export interface CabinetsCollectionOverview {
@@ -32,15 +34,15 @@ export interface DriverOverview {
 
 export default async function CabinetsPage() {
   const cabinets: CabinetsCollectionOverview = await getCabinets();
+  let count = 0;
   return (
     <div>
       <h1>Cabinets Collection</h1>
       <div className="cabinets-overview">
         {cabinets.cabinets.map((cabinet) => {
-          const id = cabinet.cabinet.cabinetUid;
           return (
-            <div className="cabinet-overview">
-              <div className="cabinet">
+            <div className="cabinet-overview" key={count++}>
+              <div className="cabinet" key={count++}>
                 <ul>
                   <li>Brand: {cabinet.cabinet.brandName}</li>
                   <li>Enclosure: {cabinet.cabinet.enclosureType}</li>
@@ -50,15 +52,15 @@ export default async function CabinetsPage() {
                   </Link>
                 </ul>
               </div>
-              <div className="owner">
+              <div className="owner" key={count++}>
                 <ul>
                   <li>owner: {cabinet.owner.ownername}</li>
                 </ul>
               </div>
-              <div className="drivers">
+              <div className="drivers" key={count++}>
                 {cabinet.drivers.map((driver) => {
                   return (
-                    <div className="driver">
+                    <div className="driver" key={count++}>
                       <ul>
                         <li>Brand: {driver.brandName}</li>
                         <li>Type: {driver.driverType}</li>
