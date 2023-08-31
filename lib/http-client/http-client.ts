@@ -30,8 +30,9 @@ export class AxiosClient {
         Authorization: config.axios.asbKeyUrl,
         Accept: "application/json",
         "content-type": "application/json",
+        "Access-Control-Allow-Origin": "*",
       },
-      withCredentials: true,
+
       responseType: "json",
       timeout: 1000,
     });

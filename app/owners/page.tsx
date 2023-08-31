@@ -17,7 +17,6 @@ export default async function OwnersPage() {
         {owners.owners.map((owner) => {
           const ownerCard = owner.owner;
           const urlName = sanitizeOwnername(ownerCard.ownername, " ");
-          console.log(urlName);
           return (
             <div className="owner-overview" key={i++}>
               <Link key={i++} href={`owners/${urlName}`}>
