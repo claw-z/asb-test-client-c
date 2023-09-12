@@ -22,7 +22,7 @@ export default function CabinetPage({ params }: any) {
     })
       .then((res) => res.json())
       .then((data) => setMeasurement(data));
-  }, []);
+  }, [params.cabinetUid]);
   if (!measurement) return <h1>no data</h1>;
   const meas: Measurement = measurement;
   const { frequency, cabinet, drivers, impedance } = meas;
