@@ -3,22 +3,49 @@ import { Chart } from 'react-chartjs-2';
 import { ImpedanceMeasurement } from '@/types/measurement';
 
 export const SecondChart = (data: any) => {
+  const impedanceCurve: ImpedanceMeasurement[] = data.impedanceCurve;
+  const chartData: ChartData = getChartData(impedanceCurve);
 
-  const impedanceCurve: ImpedanceMeasurement[] = data
-  console.log('SECOND CHART', impedanceCurve)
-  
   return (
     <Chart
       type="line"
       data={{
-        labels: [1, 2, 3, 4, 5],
+        labels: chartData.frequency,
         datasets: [
           {
-            data: [6, 7, 8, 9, 11],
+            data: chartData.impedance,
             backgroundColor: 'blue'
+          },
+          {
+            data: chartData.phase,
+            backgroundColor: 'hotpink'
           }
         ]
       }}
     />
   );
 };
+
+interface ChartData {
+  frequency: any;
+  impedance: any;
+  phase: any;
+}
+
+function getChartData(impedanceCurve: ImpedanceMeasurement[]): ChartData {
+  const frequencyArray = impedanceCurve.map(
+    (measurement: any) => measurement.frequency
+  );
+  const impedanceArray = impedanceCurve.map(
+    (measurement: any) => measurement.impedance
+  );
+  const phaseArray = impedanceCurve.map(
+    (measurement: any) => measurement.phase
+  );
+
+  return {
+    frequency: frequencyArray,
+    impedance: impedanceArray,
+    phase: phaseArray
+  };
+}
