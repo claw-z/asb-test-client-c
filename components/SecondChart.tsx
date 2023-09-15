@@ -1,7 +1,9 @@
 import 'chart.js/auto';
 import { Chart } from 'react-chartjs-2';
 
-export const SecondChart = () => {
+export const SecondChart = (impedanceCurve: any) => {
+
+  console.log('SECOND CHART', impedanceCurve)
   
   return (
     <Chart
