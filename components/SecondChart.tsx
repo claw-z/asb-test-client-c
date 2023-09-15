@@ -1,8 +1,10 @@
 import 'chart.js/auto';
 import { Chart } from 'react-chartjs-2';
+import { ImpedanceMeasurement } from '@/types/measurement';
 
-export const SecondChart = (impedanceCurve: any) => {
+export const SecondChart = (data: any) => {
 
+  const impedanceCurve: ImpedanceMeasurement[] = data
   console.log('SECOND CHART', impedanceCurve)
   
   return (

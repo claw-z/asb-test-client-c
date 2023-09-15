@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { SecondChart } from '@/components/SecondChart';
-import { Measurement } from '../../types/measurement';
+import { Measurement, ImpedanceMeasurement } from '../../types/measurement';
 
 export default function ChartJS() {
   const [measurement, setMeasurement] = useState(null);
@@ -28,11 +28,13 @@ export default function ChartJS() {
   const { frequency, cabinet, drivers, impedance } = meas;
   // WHY do we have to define another constant that equals measurement?
 
-  console.log('CHART PAGE:', meas.impedance.impedanceCurve);
+  const impedanceCurve: ImpedanceMeasurement[] = meas.impedance.impedanceCurve
+
+  console.log('CHART PAGE:', impedanceCurve);
 
   return (
     <div>
-      <SecondChart impedanceCurve={impedance.impedanceCurve}></SecondChart>
+      <SecondChart impedanceCurve={impedanceCurve}></SecondChart>
     </div>
   );
 }
