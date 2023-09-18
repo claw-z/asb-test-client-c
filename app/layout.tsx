@@ -18,6 +18,9 @@ export default function RootLayout({
                 <Link href="/owners">Owners</Link>
               </li>
               <li>
+                <Link href="/ownerz">Da Ownerz</Link>
+              </li>
+              <li>
               <Link href="/fuck">Fuck</Link>
               </li>
               <li>

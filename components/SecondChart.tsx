@@ -14,14 +14,19 @@ export const SecondChart = (data: any) => {
         datasets: [
           {
             data: chartData.impedance,
-            backgroundColor: 'blue'
+            backgroundColor: 'blue',
+            label: 'Impedance'
           },
           {
             data: chartData.phase,
-            backgroundColor: 'hotpink'
+            backgroundColor: 'hotpink',
+            label: 'Phase'
           }
         ]
       }}
+      // options={{
+      //   scales: { xAxis: { type: 'linear', position: 'right' }, yAxis: {type: 'logarithmic', position: 'left'} }
+      // }}
     />
   );
 };
