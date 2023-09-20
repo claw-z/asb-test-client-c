@@ -4,13 +4,12 @@ import { useState, useEffect } from 'react';
 import { SecondChart } from '@/components/SecondChart';
 import { Measurement, ImpedanceMeasurement } from '../../types/measurement';
 
-export default function ChartJS({ params }: any) {
+export default function ChartJS() {
   const [measurement, setMeasurement] = useState(null);
 
   useEffect(() => {
-    console.log('before fetch:', Date.now())
     fetch(
-      `http://localhost:5000/api/measurement/${params.cabinetUid}`,
+      'http://localhost:5000/api/measurement/ecd2b436-9454-4a50-8c25-0636d5a98f19',
       {
         method: 'GET',
         headers: {
@@ -21,7 +20,7 @@ export default function ChartJS({ params }: any) {
     )
       .then(res => res.json())
       .then(data => setMeasurement(data));
-  }, [params.cabinetUid]);
+  }, ['ecd2b436-9454-4a50-8c25-0636d5a98f19']);
 
   if (!measurement) return <h1>no data</h1>;
 
