@@ -21,7 +21,7 @@ export default async function OwnerPage({ params }: any) {
                   <Link
                     href={`${params.ownername}/${cabinetOverview.cabinet.cabinetUid}`}
                   >
-                    Click to show cabinets of owner
+                    Click to show cabinet of owner
                   </Link>
                 </li>
                 <li>brand name: {cabinetOverview.cabinet.brandName}</li>

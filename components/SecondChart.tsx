@@ -3,8 +3,10 @@ import { Chart } from 'react-chartjs-2';
 import { ImpedanceMeasurement } from '@/types/measurement';
 
 export const SecondChart = (data: any) => {
+  console.log('Before sorting:', Date.now());
   const impedanceCurve: ImpedanceMeasurement[] = data.impedanceCurve;
   const chartData: ChartData = getChartData(impedanceCurve);
+  console.log('After sorting:', Date.now());
 
   return (
     <Chart
@@ -38,6 +40,7 @@ interface ChartData {
 }
 
 function getChartData(impedanceCurve: ImpedanceMeasurement[]): ChartData {
+  console.log('before mapping:', Date.now());
   const frequencyArray = impedanceCurve.map(
     (measurement: any) => measurement.frequency
   );
@@ -47,6 +50,7 @@ function getChartData(impedanceCurve: ImpedanceMeasurement[]): ChartData {
   const phaseArray = impedanceCurve.map(
     (measurement: any) => measurement.phase
   );
+  console.log('after mapping:', Date.now());
 
   return {
     frequency: frequencyArray,
