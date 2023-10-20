@@ -26,9 +26,37 @@ export const SecondChart = (data: any) => {
           }
         ]
       }}
-      // options={{
-      //   scales: { xAxis: { type: 'linear', position: 'right' }, yAxis: {type: 'logarithmic', position: 'left'} }
-      // }}
+      options={{
+        responsive: true,
+        scales: {
+          x: {
+            type: 'logarithmic',
+            ticks: {
+              major: { enabled: true },
+              callback: function (value: any) {
+                if (value >= 1000) {
+                  return value / 1000 + ' kHz';
+                }
+                return value + ' Hz';
+              }
+            }
+          },
+          y: {
+            ticks: {
+              callback: function (value: any) {
+                return value + ' Ω';
+              }
+            }
+          }
+        },
+        plugins: {
+          title: {
+            display: true,
+            text: 'Driver Impedance And Phase Response',
+            font: { size: 40, weight: 'bold' }
+          }
+        }
+      }}
     />
   );
 };

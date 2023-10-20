@@ -20,7 +20,7 @@ export default function ChartJS() {
     )
       .then(res => res.json())
       .then(data => setMeasurement(data));
-  }, ['ecd2b436-9454-4a50-8c25-0636d5a98f19']);
+  }, []);
 
   if (!measurement) return <h1>no data</h1>;
 
