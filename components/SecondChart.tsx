@@ -1,12 +1,14 @@
 import 'chart.js/auto';
 import { Chart } from 'react-chartjs-2';
-import { ImpedanceMeasurement } from '@/types/measurement';
+import {
+  ChartData,
+  ImpedanceData,
+  ImpedanceMeasurement
+} from '@/types/measurement';
 
-export const SecondChart = (data: any) => {
-  console.log('Before sorting:', Date.now());
+export const SecondChart = (data: ImpedanceData) => {
   const impedanceCurve: ImpedanceMeasurement[] = data.impedanceCurve;
   const chartData: ChartData = getChartData(impedanceCurve);
-  console.log('After sorting:', Date.now());
 
   return (
     <Chart
@@ -32,18 +34,17 @@ export const SecondChart = (data: any) => {
           x: {
             type: 'logarithmic',
             ticks: {
-              major: { enabled: true },
               callback: function (value: any) {
-                if (value >= 1000) {
-                  return value / 1000 + ' kHz';
+                while (value < 1000) {
+                  return value + ' Hz';
                 }
-                return value + ' Hz';
+                return value / 1000 + ' kHz';
               }
             }
           },
           y: {
             ticks: {
-              callback: function (value: any) {
+              callback: function (value: string | number) {
                 return value + ' Ω';
               }
             }
@@ -61,24 +62,16 @@ export const SecondChart = (data: any) => {
   );
 };
 
-interface ChartData {
-  frequency: any;
-  impedance: any;
-  phase: any;
-}
-
 function getChartData(impedanceCurve: ImpedanceMeasurement[]): ChartData {
-  console.log('before mapping:', Date.now());
   const frequencyArray = impedanceCurve.map(
-    (measurement: any) => measurement.frequency
+    (measurement: ImpedanceMeasurement) => measurement.frequency
   );
   const impedanceArray = impedanceCurve.map(
-    (measurement: any) => measurement.impedance
+    (measurement: ImpedanceMeasurement) => measurement.impedance
   );
   const phaseArray = impedanceCurve.map(
-    (measurement: any) => measurement.phase
+    (measurement: ImpedanceMeasurement) => measurement.phase
   );
-  console.log('after mapping:', Date.now());
 
   return {
     frequency: frequencyArray,

@@ -1,7 +1,7 @@
 export default function StationPage() {
   return (
     <div>
-      <h1>Staeshunz Page</h1>
+      <h1>Anechoic Station Berlin</h1>
     </div>
   );
 }

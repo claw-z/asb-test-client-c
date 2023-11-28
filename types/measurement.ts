@@ -76,11 +76,21 @@ export interface Impedance {
 
 export type ThieleSmallParameters = Omit<
   Impedance,
-  "impedanceCurve" | "cabinetUid"
+  'impedanceCurve' | 'cabinetUid'
 >;
 
 export interface ImpedanceMeasurement {
   frequency: number;
   impedance: number;
   phase: number;
+}
+
+export interface ChartData {
+  frequency: number[];
+  impedance: number[];
+  phase: number[];
+}
+
+export interface ImpedanceData {
+  impedanceCurve: ImpedanceMeasurement[];
 }

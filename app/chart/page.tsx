@@ -26,11 +26,8 @@ export default function ChartJS() {
 
   const meas: Measurement = measurement;
   const { frequency, cabinet, drivers, impedance } = meas;
-  // WHY do we have to define another constant that equals measurement?
 
-  const impedanceCurve: ImpedanceMeasurement[] = meas.impedance.impedanceCurve
-
-  console.log('CHART PAGE:', impedanceCurve);
+  const impedanceCurve: ImpedanceMeasurement[] = meas.impedance.impedanceCurve;
 
   return (
     <div>

@@ -15,16 +15,13 @@ export default function RootLayout({
                 <Link href="/">Station</Link>
               </li>
               <li>
-                <Link href="/owners">Owners</Link>
+                <Link href="/owners">Owners viq</Link>
               </li>
               <li>
-                <Link href="/ownerz">Da Ownerz</Link>
+                <Link href="/ownerz">Owners clz</Link>
               </li>
               <li>
-              <Link href="/fuck">Fuck</Link>
-              </li>
-              <li>
-              <Link href="/chart">Chart</Link>
+              <Link href="/chart">Chart Example</Link>
               </li>
             </ul>
           </nav>
