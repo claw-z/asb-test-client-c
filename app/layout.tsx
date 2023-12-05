@@ -15,10 +15,7 @@ export default function RootLayout({
                 <Link href="/">Station</Link>
               </li>
               <li>
-                <Link href="/owners">Owners viq</Link>
-              </li>
-              <li>
-                <Link href="/ownerz">Owners clz</Link>
+                <Link href="/owners">Sound System Owners</Link>
               </li>
               <li>
               <Link href="/chart">Chart Example</Link>

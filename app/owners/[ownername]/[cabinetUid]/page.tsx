@@ -1,37 +1,32 @@
-"use client";
-import { useState, useEffect } from "react";
-
-// import useSWR from "swr";
-
-// import { MeasurementHttpClient } from "../../../../lib/http-client/endpoints/measurement";
-import { Measurement } from "../../../../types/measurement";
-import { MyLineChart } from "../../../../components/MyLineChart";
+'use client';
+import { useState, useEffect } from 'react';
+import { ImpedanceMeasurement } from '../../../../types/measurement';
+import { Measurement } from '../../../../types/measurement';
+import { SecondChart } from '@/components/SecondChart';
 
 export default function CabinetPage({ params }: any) {
-  // const measurement: Measurement =
-  //   await new MeasurementHttpClient().getMeasurement(params.cabinetUid);
   const [measurement, setMeasurement] = useState(null);
 
   useEffect(() => {
     fetch(`http://localhost:5000/api/measurement/${params.cabinetUid}`, {
-      method: "GET",
+      method: 'GET',
       headers: {
-        Authorization: "asb",
-        "content-type": "application/json",
-      },
+        Authorization: 'asb',
+        'content-type': 'application/json'
+      }
     })
-      .then((res) => res.json())
-      .then((data) => setMeasurement(data));
+      .then(res => res.json())
+      .then(data => setMeasurement(data));
   }, [params.cabinetUid]);
-  if (!measurement) return <h1>no data</h1>;
+  if (!measurement) return <h1>loading...</h1>;
   const meas: Measurement = measurement;
-  const { frequency, cabinet, drivers, impedance } = meas;
+  const impedanceCurve: ImpedanceMeasurement[] = meas.impedance.impedanceCurve;
 
   return (
     <div>
-      <MyLineChart
-        {...{ frequency, cabinet, drivers, impedance }}
-      ></MyLineChart>
+      <div>
+        <SecondChart impedanceCurve={impedanceCurve}></SecondChart>
+      </div>
     </div>
   );
 }

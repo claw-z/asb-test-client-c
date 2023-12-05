@@ -1,10 +1,10 @@
-import Link from "next/link";
+import Link from 'next/link';
 
-import { OwnerCard } from "../../components/cards/OwnerCard";
-import { CabinetCard } from "../../components/cards/CabinetCard";
-import { sanitizeOwnername } from "../../lib/utils";
-import { OwnersOverviewHttpClient } from "../../lib/http-client/endpoints/owners-overview";
-import { OwnersOverview } from "../../types/owners-overview";
+import { OwnerCard } from '../../components/cards/OwnerCard';
+import { CabinetCard } from '../../components/cards/CabinetCard';
+import { sanitizeOwnername } from '../../lib/utils';
+import { OwnersOverviewHttpClient } from '../../lib/http-client/endpoints/owners-overview';
+import { OwnersOverview } from '../../types/owners-overview';
 
 export default async function OwnersPage() {
   const owners: OwnersOverview =
@@ -14,9 +14,9 @@ export default async function OwnersPage() {
     <div>
       <h1>Owners overview</h1>
       <div className="owners-overview">
-        {owners.owners.map((owner) => {
+        {owners.owners.map(owner => {
           const ownerCard = owner.owner;
-          const urlName = sanitizeOwnername(ownerCard.ownername, " ");
+          const urlName = sanitizeOwnername(ownerCard.ownername, ' ');
           return (
             <div className="owner-overview" key={i++}>
               <Link key={i++} href={`owners/${urlName}`}>
@@ -24,7 +24,7 @@ export default async function OwnersPage() {
               </Link>
               <OwnerCard {...ownerCard}></OwnerCard>
               <div className="cabinets-overview">
-                {owner.cabinets.map((cabinet) => {
+                {owner.cabinets.map(cabinet => {
                   return (
                     <div className="cabinet-overview" key={i++}>
                       <CabinetCard {...cabinet}></CabinetCard>
