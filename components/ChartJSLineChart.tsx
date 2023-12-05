@@ -6,7 +6,7 @@ import {
   ImpedanceMeasurement
 } from '@/types/measurement';
 
-export const SecondChart = (data: ImpedanceData) => {
+export const ChartJSLineChart = (data: ImpedanceData) => {
   const impedanceCurve: ImpedanceMeasurement[] = data.impedanceCurve;
   const chartData: ChartData = getChartData(impedanceCurve);
 

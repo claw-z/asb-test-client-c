@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import { ImpedanceMeasurement } from '../../../../types/measurement';
 import { Measurement } from '../../../../types/measurement';
-import { SecondChart } from '@/components/SecondChart';
+import { ChartJSLineChart } from '@/components/ChartJSLineChart';
 
 export default function CabinetPage({ params }: any) {
   const [measurement, setMeasurement] = useState(null);
@@ -25,7 +25,7 @@ export default function CabinetPage({ params }: any) {
   return (
     <div>
       <div>
-        <SecondChart impedanceCurve={impedanceCurve}></SecondChart>
+        <ChartJSLineChart impedanceCurve={impedanceCurve}></ChartJSLineChart>
       </div>
     </div>
   );
