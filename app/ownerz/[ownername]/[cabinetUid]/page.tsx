@@ -4,7 +4,9 @@ import { useState, useEffect } from "react";
 // import useSWR from "swr";
 
 // import { MeasurementHttpClient } from "../../../../lib/http-client/endpoints/measurement";
+import { ImpedanceMeasurement } from "../../../../types/measurement";
 import { Measurement } from "../../../../types/measurement";
+import { SecondChart } from "@/components/SecondChart";
 import { MyLineChart } from "../../../../components/MyLineChart";
 
 export default function CabinetPage({ params }: any) {
@@ -23,15 +25,16 @@ export default function CabinetPage({ params }: any) {
       .then((res) => res.json())
       .then((data) => setMeasurement(data));
   }, [params.cabinetUid]);
-  if (!measurement) return <h1>no data</h1>;
+  if (!measurement) return <h1>loading...</h1>;
   const meas: Measurement = measurement;
-  const { frequency, cabinet, drivers, impedance } = meas;
+  // const { frequency, cabinet, drivers, impedance } = meas;
+  const impedanceCurve: ImpedanceMeasurement[] = meas.impedance.impedanceCurve
 
   return (
     <div>
-      <MyLineChart
-        {...{ frequency, cabinet, drivers, impedance }}
-      ></MyLineChart>
+      <div>
+      <SecondChart impedanceCurve={impedanceCurve}></SecondChart>
+    </div>
     </div>
   );
 }
