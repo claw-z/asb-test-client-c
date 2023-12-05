@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { SecondChart } from '@/components/SecondChart';
+import { ChartJSLineChart } from '@/components/ChartJSLineChart';
 import { Measurement, ImpedanceMeasurement } from '../../types/measurement';
 
 export default function ChartJS() {
@@ -31,7 +31,7 @@ export default function ChartJS() {
 
   return (
     <div>
-      <SecondChart impedanceCurve={impedanceCurve}></SecondChart>
+      <ChartJSLineChart impedanceCurve={impedanceCurve}></ChartJSLineChart>
     </div>
   );
 }
